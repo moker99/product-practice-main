@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('message_texts', function (Blueprint $table) {
-            $table->renameColumn('text', 'text_2');
+        Schema::create('message_texts', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->text('twotext')->nullable()->default('')->comment('子留言');
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('message_texts', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('message_texts');
     }
 };
