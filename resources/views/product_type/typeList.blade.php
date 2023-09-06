@@ -72,7 +72,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($types as $type)
-                                        <tr>
+                                        <tr id="dataCol{{ $type->id }}">
                                             <td>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value=""
@@ -94,7 +94,8 @@
                                             <td>
                                                 <div class="dropdown">
                                                     <div>
-                                                        <form action="{{ route('type.destroy', ['type' => $type->id]) }}"
+                                                        {{-- 寫法一 --}}
+                                                        {{-- <form action="{{ route('type.destroy', ['type' => $type->id]) }}"
                                                             method="post" onsubmit="deleteType(this)">
                                                             @csrf
                                                             @method('DELETE')
@@ -102,7 +103,15 @@
                                                                 <i class="fa-regular fa-trash-can me-3"></i>
                                                                 刪除
                                                             </button>
-                                                        </form>
+                                                        </form> --}}
+                                                        {{-- 寫法二 --}}
+
+                                                        <button class="dropdown-item" type="button"
+                                                            onclick="deleteData({{ $type->id }},{{ $type->name }})">
+                                                            <i class="fa-regular fa-trash-can me-3"></i>
+                                                            刪除
+                                                        </button>
+
                                                     </div>
                                                     <div><a class="dropdown-item"
                                                             href="{{ route('type.edit', ['type' => $type->id]) }}">
@@ -139,23 +148,61 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        const forms = document.querySelectorAll('td .dropdown form');
+        // 寫法一
+        // const forms = document.querySelectorAll('td .dropdown form');
 
-        forms.forEach(element => {
-            element.addEventListener('submit', (event) => {
-                event.preventDefault();
-                Swal.fire({
-                    title: 'Do you want to save the changes?',
-                    showDenyButton: true,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isDenied) {
-                        element.submit();
-                    } 
-                })
+        // forms.forEach(element => {
+        //     element.addEventListener('submit', (event) => {
+        //         event.preventDefault();
+        //         Swal.fire({
+        //             title: 'Do you want to save the changes?',
+        //             showDenyButton: true,
+        //             confirmButtonText: 'Save',
+        //             denyButtonText: `Don't save`,
+        //         }).then((result) => {
+        //             /* Read more about isConfirmed, isDenied below */
+        //             if (result.isDenied) {
+        //                 element.submit();
+        //             } 
+        //         })
+        //     })
+        // });
+
+        // 寫法二
+        function deleteData(id) {
+            const formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append('_method', 'delete');
+            Swal.fire({
+                title: `確認要刪除${name}資料嗎`,
+                showDenyButton: true,
+                confirmButtonText: '取消',
+                denyButtonText: `刪除`,
+            }).then((result) => {
+                if (result.isDenied) {
+                    fetch(`/type/${id}`, {
+                        method: 'post',
+                        body: formData,
+                    }).then((res) => {
+                        return res.text();
+                    }).then((data) => {
+                        if (data == 'success') {
+                            Swal.fire({
+                                icon:'success',
+                                title:'刪除成功',
+                            })
+                            const tr = document.querySelector(`tr#dataCol${id}`);
+                            tr.remove();
+                        }else{
+                            Swal.fire({
+                                icon:'error',
+                                title:'刪除失敗',
+                                text:'查無資料',
+                            })
+                        }
+                    })
+                }
             })
-        });
+        }
     </script>
 @endsection

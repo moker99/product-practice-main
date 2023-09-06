@@ -27,6 +27,7 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        // if msgid
         // $type
         $type = Messagenew::create([
             'text' => $request->newdesc,
@@ -34,11 +35,11 @@ class MessageController extends Controller
             'reply_desc' => $request->replydesc,
         ]);
 
-
-        // Messagereply::create([
-        //     // 'text' => $request->replydesc,
-        //     // 'product_type_id' => $type->id,
-        // ]);
+       
+        Messagereply::create([
+            'text_2' => $request->replydesc,
+            'message_text_id' => $type->id,
+        ]);
 
         // dd($request->all());
         return redirect(route('message.index'));

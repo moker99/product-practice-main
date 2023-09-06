@@ -10,7 +10,7 @@ class Messagereply extends Model
     use HasFactory;
     protected $table = 'message_texts';
 
-    protected $fillable = ['text','message_text_id'];
+    protected $fillable = ['text_2','message_text_id'];
 
     public function messageNew()
     {

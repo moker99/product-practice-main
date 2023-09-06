@@ -14,7 +14,9 @@ class ProductTypeImg extends Model
 
     public function productType()
     {
-        // hasOne(關聯,對方的欄位,自己的欄位)
+        // hasOne(一對一)(關聯,對方的欄位,自己的欄位)
+        // belongsTo(一對一)
         return $this->hasOne(ProductType::class,'id','product_type_id');
+        
     }
 }

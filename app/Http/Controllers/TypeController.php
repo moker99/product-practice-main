@@ -101,11 +101,26 @@ class TypeController extends Controller
     public function destroy($id)
     {
         $type = ProductType::find($id);
-        foreach ($type->productTypeImg ?? [] as $value) {
-            $this->fileService->deleteUpload($value->img_path);
-            $value->delete();
+
+        $result = 'success';
+
+        if ($type) {
+            foreach ($type->productTypeImg ?? [] as $value) {
+                $this->fileService->deleteUpload($value->img_path);
+                $value->delete();
+            }
+            $type->delete();
+        } else {
+            $result = 'fail';
         }
-        $type->delete();
-        return redirect(route('type.index'));
+        return $result;
+
+        // 寫法一
+        // foreach ($type->productTypeImg ?? [] as $value) {
+        //     $this->fileService->deleteUpload($value->img_path);
+        //     $value->delete();
+        // }
+        // $type->delete();
+        // return redirect(route('type.index'));
     }
 }

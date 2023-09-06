@@ -40,40 +40,26 @@
                                         </div>
                                     </div>
                                     <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <div>
-                                                <label class="form-check-label fs-1" for="firstCheckbox">
-                                                    {{-- {{ $item->id }}-{{ $item->text }} --}}
-                                                </label>
-                                                <div class="dropdown">
-                                                    <div>
-                                                        {{-- <form action="{{ route('message.destroy', ['item' => $item->id]) }}"
-                                                        method="post" onsubmit="deleteType(this)">
-                                                        @csrf
-                                                        @method('DELETE') --}}
-                                                        {{-- <button class="dropdown-item" type="submit">
-                                                                <i class="fa-regular fa-trash-can me-3"></i>
-                                                                刪除
-                                                            </button> --}}
-                                                        {{-- </form> --}}
-                                                    </div>
-                                                    <div>
-                                                        {{-- <form
-                                                                action="{{ route('message.update', ['item' => $item->id]) }}"
-                                                                method="POST" enctype="multipart/form-data">
-                                                                @method('PUT')
-                                                                @csrf
-                                                                <button class="dropdown-item" type="submit">
-                                                                    <i class="fa-regular fa-trash-can me-3"></i>
-                                                                    編輯
-                                                                </button>
-                                                            </form> --}}
-                                                    </div>
+                                        @foreach ($item->messageReply as $reply)
+                                            <li class="list-group-item">
+                                                <div>
+                                                    <label class="form-check-label fs-1" for="firstCheckbox">
+                                                        {{ $reply->id }}-{{ $reply->text_2 }}
+                                                    </label>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endforeach
                                     </ul>
-                                    <textarea name="replydesc" class="w-100" style=" min-height: 30px;"></textarea>
+                                    <!-- 回复留言表单 -->
+                                    <form action="{{ route('message.store') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="text" name="msgid" value="{{$item->id}}" hidden>
+                                        <textarea name="replydesc" class="w-100" style="min-height: 30px;"></textarea>
+                                        <div class="btn-group justify-content-center d-flex newdesc">
+                                            <button type="submit" class="btn btn-primary m-3">回复</button>
+                                        </div>
+                                    </form>
                                 </li>
                             @endforeach
 
@@ -82,9 +68,10 @@
                                 <hr>
                                 <form actixon="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="text" name="msgid" value="" hidden>
                                     <textarea name="newdesc" class="w-100" style=" min-height: 150px;"></textarea>
                                     <div class="btn-group justify-content-center d-flex newdesc">
-                                        <button type="submit" class="btn btn-primary m-3">儲存按鈕</button>
+                                        <button type="submit" class="btn btn-primary m-3">新留言</button>
                                     </div>
                                 </form>
                             </li>
