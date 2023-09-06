@@ -6,75 +6,81 @@
             <div class="col">
                 <div class="card h-100 card-lg">
                     <div class="card-body p-0">
-                        <ul class="list-group">
-                            @foreach ($types as $item)
-                                <li class="list-group-item">
 
-                                    <div>
-                                        <label class="form-check-label fs-1" for="firstCheckbox">
-                                            {{ $item->id }}-{{ $item->text }}
-                                        </label>
-                                        <div class="dropdown">
-                                            <div>
-                                                <form action="{{ route('message.destroy', ['message' => $item->id]) }}"
-                                                    method="POST" onsubmit="deleteType(this)">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="dropdown-item" type="submit">
-                                                        <i class="fa-regular fa-trash-can me-3"></i>
-                                                        刪除
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <div>
-                                                <form action="{{ route('message.update', ['message' => $item->id]) }}"
-                                                    method="POST" enctype="multipart/form-data">
-                                                    @method('put')
-                                                    @csrf
-                                                    <button class="dropdown-item" type="submit">
-                                                        <i class="fa-regular fa-trash-can me-3"></i>
-                                                        編輯
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul class="list-group">
-                                        @foreach ($item->messageReply as $reply)
-                                            <li class="list-group-item">
-                                                <div>
-                                                    <label class="form-check-label fs-1" for="firstCheckbox">
-                                                        {{ $reply->id }}-{{ $reply->text_2 }}
-                                                    </label>
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                    <!-- 回复留言表单 -->
-                                    <form action="{{ route('message.store') }}" method="POST"
-                                        enctype="multipart/form-data">
+                        <h1>留言板</h1>
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <form method="post" action="{{ route('messages.store') }}">
+                            @csrf
+                            <label for="content">留言：</label>
+                            <textarea name="content" required></textarea><br><br>
+                            <button type="submit">發布留言</button>
+                        </form>
+
+                        <h2>留言列表：</h2>
+                        <ul>
+                            @foreach ($messages as $message)
+                                <li>
+                                    <strong>{{ $message->id }}:{{ $message->content }}</strong>
+                                    <form method="post" action="{{ route('messages.edit', $message->id) }}">
                                         @csrf
-                                        <input type="text" name="msgid" value="{{$item->id}}" hidden>
-                                        <textarea name="replydesc" class="w-100" style="min-height: 30px;"></textarea>
-                                        <div class="btn-group justify-content-center d-flex newdesc">
-                                            <button type="submit" class="btn btn-primary m-3">回复</button>
-                                        </div>
+                                        @method('PUT')
+                                        <textarea name="edited_reply"></textarea>
+                                        <button type="submit">編輯</button>
                                     </form>
+
+                                    <!-- 刪除留言按鈕 -->
+                                    <form method="post" action="{{ route('messages.destroy', $message->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">刪除</button>
+                                    </form>
+
+                                    <!-- 回覆表單 -->
+                                    <form method="post" action="{{ route('messages.reply', $message->id) }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="reply">回覆：</label>
+                                            <input type="text" name="reply" required>
+                                        </div>
+                                        <button type="submit">回覆</button>
+                                    </form>
+
+                                    <!-- 顯示回覆 -->
+                                    @if ($message->replies->count() > 0)
+                                        <ul>
+                                            @foreach ($message->replies as $reply)
+                                                <li>
+                                                    <strong>{{ $reply->message_id }}-{{ $reply->id }}</strong>:
+                                                    {{ $reply->content }}
+
+                                                    <!-- 編輯回覆表單 -->
+                                                    <form method="post" action="{{ route('replies.edit', $reply->id) }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="text" name="edited_reply"
+                                                            value="{{ $reply->content }}">
+                                                        <button type="submit">編輯</button>
+                                                    </form>
+
+                                                    <!-- 刪除回覆表單 -->
+                                                    <form method="post"
+                                                        action="{{ route('replies.destroy', $reply->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit">刪除</button>
+                                                    </form>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </li>
                             @endforeach
-
-                            <li class="list-group-item">
-                                <label class="form-check-label fs-1" for="thirdCheckbox">最新留言</label>
-                                <hr>
-                                <form actixon="{{ route('message.store') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="text" name="msgid" value="" hidden>
-                                    <textarea name="newdesc" class="w-100" style=" min-height: 150px;"></textarea>
-                                    <div class="btn-group justify-content-center d-flex newdesc">
-                                        <button type="submit" class="btn btn-primary m-3">新留言</button>
-                                    </div>
-                                </form>
-                            </li>
                         </ul>
                     </div>
                 </div>

@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('onetext')->nullable()->default('')->comment('主要留言');
+            $table->unsignedBigInteger('message_id')->nullable()->comment('子ID');;
+            $table->string('name')->nullable()->default('')->comment('名子');
+            $table->text('content')->nullable()->default('')->comment('子留言');
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('replies');
     }
 };

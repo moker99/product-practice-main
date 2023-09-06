@@ -51,7 +51,7 @@
                     </div>
                     <div class="search-icon">
                         <div class="list-inline d-none d-lg-block">
-                            <a href="{{route('message.index')}}">
+                            {{-- <a href="{{route('messages.index')}}"> --}}
                                 <i class="fa-thin fa-heart"></i>
                             </a>
                         </div>
