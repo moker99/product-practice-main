@@ -867,7 +867,6 @@
                                         </li>
                                         <li class="list-group-item" style="height: 150px;">
                                             <label class="form-check-label fs-1" for="secondCheckbox">產品圖片</label>
-                                            <input type="file">
                                             <input name="image" class="form-check-input me-1 fs-1 w-75"
                                                 type="file" value="" style="height: 100px;" required
                                                 accept="image/*">

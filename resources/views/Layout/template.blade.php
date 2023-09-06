@@ -21,6 +21,7 @@
     <script src="/js/theme.min.js"></script>
     <link href="/css/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="./assets/images/cart-shopping-solid.svg">
+    @yield('head')
 </head>
 
 <body>

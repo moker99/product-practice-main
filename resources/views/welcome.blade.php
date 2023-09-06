@@ -132,332 +132,43 @@
         </div>
         <h2 class="Popular">Popular Products</h2>
         <div class="all-card">
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-1.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Snack & Munchies</span>
-                <div class="all-card-haver">
-                    <a href="#">Haldiram's Sev Bhujia</a>
-                </div>
-                <div class="card-evaluates d-flex">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star-sharp-half" style="color: #FFC107;"></i>
-                    <i class="fa-light fa-star-sharp-half fa-flip-horizontal" style="color: #FFC107;"></i>
-                    4.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$18&nbsp;<del>$24</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-2.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Bakery & Biscuits</span>
-                <div class="all-card-haver">
-                    <a href="#">NutriChoice Digestive</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    4.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$24</span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-3.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Bakery & Biscuits</span>
-                <div class="all-card-haver">
-                    <a href="#">Cadbury 5 Star Chocolate</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    5
-                </div>
-                <div class="btn-all-card">
-                    <span>$32&nbsp;<del>$35</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-4.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Snack & Munchies</span>
-                <div class="all-card-haver">
-                    <a href="#">Onion Flavour Potato</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    3.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$3&nbsp;<del>$5</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-5.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Instant Food</span>
-                <div class="all-card-haver">
-                    <a href="#">Salted Instant Popcorn</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    3.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$13&nbsp;<del>$18</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-6.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Dairy, Bread & Eggs</span>
-                <div class="all-card-haver">
-                    <a href="#">Blueberry Greek Yogurt</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    4.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$18&nbsp;<del>$24</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-7.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Dairy, Bread & Eggs</span>
-                <div class="all-card-haver">
-                    <a href="#">Britannia Cheese Slices</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    5
-                </div>
-                <div class="btn-all-card">
-                    <span>$24</span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-8.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Instant Food</span>
-                <div class="all-card-haver">
-                    <a href="#">Kellogg's Original Cereals</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    5
-                </div>
-                <div class="btn-all-card">
-                    <span>$32&nbsp;<del>$35</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-9.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Snack & Munchies</span>
-                <div class="all-card-haver">
-                    <a href="#">Slurrp Millet Chocolate</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    5
-                </div>
-                <div class="btn-all-card">
-                    <span>$3&nbsp;<del>$5</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="all-card1">
-                <div class="all-card-img">
-                    <div class="all-img-1">
-                        <img src="./img/product-img-10.jpg" alt="">
-                    </div>
-                    <div class="all-card-icon">
-                        <i class="fa-thin fa-eye"></i>
-                        <i class="fa-thin fa-heart"></i>
-                        <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
-                    </div>
-                </div>
-                <span>Dairy, Bread & Eggs</span>
-                <div class="all-card-haver">
-                    <a href="#">Amul Butter - 500 g</a>
-                </div>
-                <div class="card-evaluates">
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    <i class="fa-solid fa-star" style="color: #FFC107;"></i>
-                    3.5
-                </div>
-                <div class="btn-all-card">
-                    <span>$13&nbsp;<del>$18</del></span>
-                    <div class="btn-add">
-                        <a href="#">
-                            <span>+ Add</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @foreach ($products ?? [] as $product)
+                @dump($product)
 
-
-
-
-
+                <div class="all-card1">
+                    <div class="all-card-img">
+                        <div class="all-img-1">
+                            <img src="{{ asset($product->img_path) }}" alt="">
+                        </div>
+                        <div class="all-card-icon">
+                            <i class="fa-thin fa-eye"></i>
+                            <i class="fa-thin fa-heart"></i>
+                            <i class="fa-thin fa-arrow-up-arrow-down fa-rotate-90"></i>
+                        </div>
+                    </div>
+                    <span>{{ $product->name }}</span>
+                    <div class="all-card-haver">
+                        <a href="#">{{ $product->desc }}</a>
+                    </div>
+                    <div class="card-evaluates d-flex">
+                        <i class="fa-solid fa-star" style="color: #FFC107;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFC107;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFC107;"></i>
+                        <i class="fa-solid fa-star" style="color: #FFC107;"></i>
+                        <i class="fa-solid fa-star-sharp-half" style="color: #FFC107;"></i>
+                        <i class="fa-light fa-star-sharp-half fa-flip-horizontal" style="color: #FFC107;"></i>
+                        4.5
+                    </div>
+                    <div class="btn-all-card">
+                        <span>{{ $product->price }}</span>
+                        <div class="btn-add">
+                            <a href="#">
+                                <span>+ Add</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
         <h2>Daily Best Sells</h2>
         <div class="main-Best">

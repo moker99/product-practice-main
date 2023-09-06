@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
 
     // protected $FileService;
-    
+
     // public function __construct(FileService $FileService)
     // {
     //     $this->FileService = $FileService;
@@ -26,11 +26,21 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::get();
-        //產品列表頁
-        return view('product.cartlist', compact('products'));
+        $products = Product::query();
+        $keyword = $request->keyword ?? '';
+        if ($request->filled('keyword')) {
+            //                             "%{$keyword}%" 這樣也可以
+            $products->where('name','like','%'.$keyword.'%')->orWhere('name','like','%'.$keyword.'%');
+        }
+        $products = $products->paginate(2);
+        // 方法一
+        // $products->withPath('/product/list?keyword=' . $keyword);
+        // 方法二這個比較好
+        $products->appends(['keyword' => $keyword]);
+        // //產品列表頁
+        return view('product.cartlist', compact('products','keyword'));
     }
 
     /**
