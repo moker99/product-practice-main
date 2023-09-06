@@ -71,50 +71,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($products as $product)
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                value="" id="orderOne">
-                                                            <label class="form-check-label" for="orderOne">
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"> <img
-                                                                src="{{ asset($product->img_path) }}"
-                                                                alt="" class="icon-shape icon-md"></a>
-                                                    </td>
-                                                    <td>{{ $product->name }}</td>
-                                                    <td>{{ $product->desc }}</td>
-                                                    <td>{{ $product->created_at->format('Y/m/d') }}</td>
-                                                    <td>
-                                                        @if ($product->status === 1)
-                                                            <span class="badge bg-light-primary text-dark-primary">顯示</span>
-                                                        @else
-                                                            <span class="badge bg-danger">不顯示</span>
-                                                        @endif
-                                                    </td>
-                                                    <td>${{ $product->price }}</td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <div>
-                                                                <form action="{{ route('type.delete', ['id' => $product->id]) }}" method="post">
-                                                                    @csrf
-                                                                    <button class="dropdown-item" type="submit">
-                                                                        <i class="fa-regular fa-trash-can me-3"></i>
-                                                                        刪除
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                            <div><a class="dropdown-item" href="{{ route('type.edit', ['id' => $product->id]) }}">
-                                                                <i class="fa-light fa-pen-to-square me-3"></i>編輯</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach --}}
+                                    @foreach ($types as $type)
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="orderOne">
+                                                    <label class="form-check-label" for="orderOne">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @foreach ($type->productTypeImg ?? [] as $img)
+                                                    <a href="#"> <img src="{{ asset($img->img_path) }}" alt=""
+                                                            class="icon-shape icon-md"></a>
+                                                @endforeach
+
+                                            </td>
+                                            <td>{{ $type->name }}</td>
+                                            <td>{{ $type->desc }}</td>
+                                            <td>{{ $type->created_at->format('Y/m/d') }}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <div>
+                                                        <form action="{{ route('type.destroy', ['type' => $type->id]) }}"
+                                                            method="post" onsubmit="deleteType(this)">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="dropdown-item" type="submit">
+                                                                <i class="fa-regular fa-trash-can me-3"></i>
+                                                                刪除
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div><a class="dropdown-item"
+                                                            href="{{ route('type.edit', ['type' => $type->id]) }}">
+                                                            <i class="fa-light fa-pen-to-square me-3"></i>編輯</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -137,4 +134,28 @@
 
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const forms = document.querySelectorAll('td .dropdown form');
+
+        forms.forEach(element => {
+            element.addEventListener('submit', (event) => {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Do you want to save the changes?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Save',
+                    denyButtonText: `Don't save`,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isDenied) {
+                        element.submit();
+                    } 
+                })
+            })
+        });
+    </script>
 @endsection

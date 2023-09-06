@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::prefix('/product')->group(function () {
 });
 
 Route::resource('/type',TypeController::class);
+Route::resource('/message',MessageController::class);
 
 
 

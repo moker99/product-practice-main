@@ -17,7 +17,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('product_type.typeList');
+        $types = ProductType::get();
+        // $typesImg = ProductTypeImg::first();
+        // dd($typesImg->productType);
+        return view('product_type.typeList', compact('types'));
     }
 
     /**
@@ -33,19 +36,19 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-       $type = ProductType::create([
+        $type = ProductType::create([
             'name' => $request->name,
             'desc' => $request->desc,
         ]);
 
         foreach ($request->image ?? [] as $value) {
             ProductTypeImg::create([
-             'img_path'=> $this->fileService->imgUpload($value, 'type-image'),
-             'product_type_id'=> $type->id,
+                'img_path' => $this->fileService->imgUpload($value, 'type-image'),
+                'product_type_id' => $type->id,
             ]);
         }
         // dd($request->all());
-         return redirect(route('type.index'));
+        return redirect(route('type.index'));
     }
 
     /**
@@ -59,10 +62,10 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
-        return view('product_type.editTypeList');
+        $type = ProductType::find($id);
+        return view('product_type.editTypeList', compact('type'));
     }
 
     /**
@@ -70,14 +73,39 @@ class TypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request->all());
+        $type = ProductType::find($id);
+        $type->update([
+            'name' => $request->name,
+            'desc' => $request->desc,
+        ]);
+        if ($request->hasFile('image')) {
+            foreach ($type->productTypeImg ?? [] as $value) {
+                $this->fileService->deleteUpload($value->img_path);
+                $value->delete();
+            }
+            foreach ($request->image ?? [] as $value) {
+                ProductTypeImg::create([
+                    'img_path' => $this->fileService->imgUpload($value, 'type-image'),
+                    'product_type_id' => $id,
+                ]);
+            }
+        }
+
+        return redirect(route('type.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $type = ProductType::find($id);
+        foreach ($type->productTypeImg ?? [] as $value) {
+            $this->fileService->deleteUpload($value->img_path);
+            $value->delete();
+        }
+        $type->delete();
+        return redirect(route('type.index'));
     }
 }
