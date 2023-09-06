@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// 方法一
 // Route::get('/ms', [MessageController::class, 'index'])->name('messages.index');
 // Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
 Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
@@ -25,7 +25,7 @@ Route::post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('
 // Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
 Route::put('/replies/{id}/edit', [MessageController::class, 'replyEdit'])->name('replies.edit');
 Route::delete('/replies/{id}', [MessageController::class, 'replyDestroy'])->name('replies.destroy');
-Route::resource('/messages', MessageController::class);
+// 方法二
 
 
 Route::get('/', [FrontController::class, 'index'])->name('products.index');
@@ -48,3 +48,4 @@ Route::resource('/type', TypeController::class);
 Route::get('/playground', [FrontController::class, 'test01']);
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 
+Route::resource('/messages', MessageController::class);
