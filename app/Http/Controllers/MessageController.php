@@ -127,7 +127,7 @@ class MessageController extends Controller
             'edited_reply' => 'required',
         ]);
 
-        $message = Message::findOrFail($id);
+        $message = Message::find($id);
         $message->update(['content' => $request->input('edited_reply')]);
 
         return redirect()->route('messages.index')->with('success', '回覆已編輯！');
@@ -135,7 +135,7 @@ class MessageController extends Controller
 
     public function destroy($id)
     {
-        $message = Message::findOrFail($id);
+        $message = Message::find($id);
         $message->delete();
 
         return redirect()->route('messages.index')->with('success', '回覆已刪除！');
@@ -164,7 +164,7 @@ class MessageController extends Controller
             'edited_reply' => 'required',
         ]);
 
-        $reply = Reply::findOrFail($replyId);
+        $reply = Reply::find($replyId);
         $reply->update(['content' => $request->input('edited_reply')]);
 
         return redirect()->route('messages.index')->with('success', '回覆已編輯！');
@@ -173,7 +173,7 @@ class MessageController extends Controller
     // 刪除回覆
     public function replyDestroy($replyId)
     {
-        $reply = Reply::findOrFail($replyId);
+        $reply = Reply::find($replyId);
         $reply->delete();
 
         return redirect()->route('messages.index')->with('success', '回覆已刪除！');

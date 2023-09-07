@@ -27,7 +27,7 @@
                             @foreach ($messages as $message)
                                 <li>
                                     <strong>{{ $message->id }}:{{ $message->content }}</strong>
-                                    <form method="post" action="{{ route('messages.edit', $message->id) }}">
+                                    <form method="post" action="{{ route('messages.update', $message->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <textarea name="edited_reply"></textarea>
