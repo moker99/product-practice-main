@@ -109,8 +109,9 @@ class MessageController extends Controller
         ]);
 
         Message::create([
-            'content' => $request->input('content'),
+            'content' => $request->content,
         ]);
+
 
         return redirect()->route('messages.index')->with('success', '留言已發布！');
     }
@@ -128,7 +129,18 @@ class MessageController extends Controller
         ]);
 
         $message = Message::find($id);
-        $message->update(['content' => $request->input('edited_reply')]);
+        $message->update(['content' => $request->edited_reply]);
+
+        $request->validate([
+            'reply' => 'required',
+        ]);
+
+        Reply::create([
+            // 'name' => '回覆者', // 根據需要更改回覆者的名字
+            'content' => $request->reply,
+            'message_id' => $id,
+        ]);
+
 
         return redirect()->route('messages.index')->with('success', '回覆已編輯！');
     }
@@ -136,7 +148,13 @@ class MessageController extends Controller
     public function destroy($id)
     {
         $message = Message::find($id);
+        foreach ($message->replies as $item) {
+            $item->delete();
+        }
+        // $reply = Reply::find($id);
+        // dd( $message-> replies);
         $message->delete();
+        // $reply->delete();
 
         return redirect()->route('messages.index')->with('success', '回覆已刪除！');
     }
@@ -150,7 +168,7 @@ class MessageController extends Controller
 
         Reply::create([
             // 'name' => '回覆者', // 根據需要更改回覆者的名字
-            'content' => $request->input('reply'),
+            'content' => $request->reply,
             'message_id' => $messageId,
         ]);
 
@@ -165,7 +183,7 @@ class MessageController extends Controller
         ]);
 
         $reply = Reply::find($replyId);
-        $reply->update(['content' => $request->input('edited_reply')]);
+        $reply->update(['content' => $request->edited_reply]);
 
         return redirect()->route('messages.index')->with('success', '回覆已編輯！');
     }

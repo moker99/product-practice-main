@@ -1,4 +1,4 @@
-@extends('Layout.message')
+@extends('templates.message')
 
 @section('main')
     <div class="container">
@@ -27,13 +27,13 @@
                             @foreach ($messages as $message)
                                 <li>
                                     <strong>{{ $message->id }}:{{ $message->content }}</strong>
+
                                     <form method="post" action="{{ route('messages.update', $message->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <textarea name="edited_reply"></textarea>
                                         <button type="submit">編輯</button>
                                     </form>
-
                                     <!-- 刪除留言按鈕 -->
                                     <form method="post" action="{{ route('messages.destroy', $message->id) }}">
                                         @csrf

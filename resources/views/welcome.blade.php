@@ -1,4 +1,4 @@
-@extends('Layout.message')
+@extends('templates.message')
 @section('main')
     <div id="main-all">
         <!-- Swiper -->
