@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_types', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('name')->nullable()->default('')->comment('類別名稱');
-            $table->text('desc')->nullable()->comment('類別描述');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->bigInteger('parent_id')->nullable()->comment('parent_id');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_types');
+        Schema::table('messages', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_type_imgs', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('img_path')->nullable()->default('')->comment('圖片路徑');
-            $table->bigInteger('product_type_id')->comment('產品類別ID');
+        Schema::table('users', function (Blueprint $table) {
+           $table->integer('user_role')->default(2)->comment('1.管理者2.一般使用者');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_type_imgs');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_role');
+        });
     }
 };
