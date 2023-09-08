@@ -115,6 +115,11 @@ class MessageController extends Controller
 
         return redirect()->route('messages.index')->with('success', '留言已發布！');
     }
+    public function show(string $id)
+    {
+        //
+    }
+
 
     public function edit($id)
     {

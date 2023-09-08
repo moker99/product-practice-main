@@ -36,7 +36,7 @@ Route::middleware('auth')->post('/messages/{id}/reply', [MessageController::clas
 Route::middleware('auth')->put('/replies/{id}/edit', [MessageController::class, 'replyEdit'])->name('replies.edit');
 Route::middleware('auth')->delete('/replies/{id}', [MessageController::class, 'replyDestroy'])->name('replies.destroy');
 // 方法二
-Route::middleware('auth')->resource('/messages', MessageController::class);
+Route::resource('/messages', MessageController::class);
 Route::get('/', [FrontController::class, 'index'])->name('products.index');
 
 Route::middleware('auth')->prefix('/product')->group(function () {
