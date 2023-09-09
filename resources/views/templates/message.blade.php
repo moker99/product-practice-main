@@ -820,7 +820,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     @yield('js')
 </body>
 

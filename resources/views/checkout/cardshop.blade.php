@@ -23,17 +23,18 @@
                             </div>
                             <div class="card d-flex flex-row justify-content-between align-items-center">
                                 <div>
-                                    <img src="{{ asset('assets/images/avatar/avatar-1.jpg') }}" class="card-img" alt="..."
-                                        style="width: 80px;">
+                                    <img src="{{ asset('assets/images/avatar/avatar-1.jpg') }}" class="card-img"
+                                        alt="..." style="width: 80px;">
                                 </div>
                                 <div>
                                     <span>產品名稱</span>
                                     <p>123</p>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <button type="button" class="btn btn-secondary btn-add" style="height: 30px">+</button>
+                                    <button type="button" class="btn btn-secondary btn-adds" style="height: 30px">+</button>
                                     <input type="number" class="inputs" value="0">
-                                    <button type="button" class="btn btn-secondary btn-subtract" style="height: 30px">-</button>
+                                    <button type="button" class="btn btn-secondary btn-subtracts"
+                                        style="height: 30px">-</button>
                                 </div>0
                                 <div class="me-2">
                                     <span>價格$</span>
@@ -44,7 +45,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end my-3">
-                                <a href="">
+                                <a href="{{ route('shopCart.delivery') }}">
                                     <button type="button" class="btn btn-secondary">下一步</button>
                                 </a>
                             </div>
@@ -58,21 +59,25 @@
 @endsection
 
 @section('js')
-<script>
-        let btnAdd = document.querySelectorAll('.btn-add');
-        let btnSubtract = document.querySelectorAll('.btn-subtract');
+    <script>
+        let btnAdd = document.querySelectorAll('.btn-adds');
+        let btnSubtract = document.querySelectorAll('.btn-subtracts');
         let inputs = document.querySelectorAll('.inputs');
 
         btnAdd.forEach(function(button, index) {
+            console.log(button, index);
+            // console.log(123);
             button.addEventListener('click', function() {
                 let currentValue = parseInt(inputs[index].value);
                 currentValue += 1;
                 inputs[index].value = currentValue;
+                // console.log(123);
             });
         });
 
         btnSubtract.forEach(function(button, index) {
             button.addEventListener('click', function() {
+                console.log(inputs[index + 1]);
                 let currentValue = parseInt(inputs[index].value);
                 currentValue -= 1;
                 if (currentValue < 0) {
@@ -81,6 +86,5 @@
                 inputs[index].value = currentValue;
             });
         });
-
-</script>
+    </script>
 @endsection

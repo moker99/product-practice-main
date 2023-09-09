@@ -27,10 +27,10 @@
                             </div>
                      
                             <div class="d-flex justify-content-between my-3">
-                                <a href="">
+                                <a href="{{ route('shopCart.index') }}">
                                     <button type="buutton" class="btn btn-secondary">上一步</button>
                                 </a>
-                                <a href="">
+                                <a href="{{ route('shopCart.payment') }}">
                                     <button type="button" class="btn btn-secondary">下一步</button>
                                 </a>
                             </div>
