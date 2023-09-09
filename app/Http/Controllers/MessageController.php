@@ -115,17 +115,17 @@ class MessageController extends Controller
 
         return redirect()->route('messages.index')->with('success', '留言已發布！');
     }
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
 
-    public function edit($id)
-    {
-        // 顯示編輯留言的表單，通常不需要具體的程式碼，除非有自訂的邏輯。
-        return view('your_edit_view', ['message' => Message::findOrFail($id)]);
-    }
+    // public function edit($id)
+    // {
+    //     // 顯示編輯留言的表單，通常不需要具體的程式碼，除非有自訂的邏輯。
+    //     return view('your_edit_view', ['message' => Message::findOrFail($id)]);
+    // }
 
     public function update(Request $request, $id)
     {

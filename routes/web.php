@@ -30,9 +30,9 @@ require __DIR__ . '/auth.php';
 // 方法一
 // Route::get('/ms', [MessageController::class, 'index'])->name('messages.index');
 // Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
-Route::middleware('auth')->post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 // Route::put('/messages/{id}/edit', [MessageController::class, 'edit'])->name('messages.edit');
 // Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
+Route::middleware('auth')->post('/messages/{id}/reply', [MessageController::class, 'reply'])->name('messages.reply');
 Route::middleware('auth')->put('/replies/{id}/edit', [MessageController::class, 'replyEdit'])->name('replies.edit');
 Route::middleware('auth')->delete('/replies/{id}', [MessageController::class, 'replyDestroy'])->name('replies.destroy');
 // 方法二
