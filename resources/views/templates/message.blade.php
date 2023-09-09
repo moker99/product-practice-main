@@ -7,9 +7,9 @@
     <title>Homepage v1 - eCommerce HTML Template - FreshCart </title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-    <link rel="stylesheet" href="./css/freshcart.css">
+    <link rel="stylesheet" href="{{ asset('css/freshcart.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
 
 <body>
@@ -527,7 +527,6 @@
             </div>
         </div>
     </nav>
-
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header border-bottom">
             <div class="offcanvas-title">

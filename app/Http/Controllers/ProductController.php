@@ -161,4 +161,9 @@ class ProductController extends Controller
         $product->delete();
         return redirect(route('product.index'));
     }
+
+    public function payment()
+    {
+        return view('checkout.payment');
+    }
 }

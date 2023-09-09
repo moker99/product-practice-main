@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutallController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\FrontController;
@@ -55,3 +56,17 @@ Route::get('/playground', [FrontController::class, 'test01']);
 Route::post('/fetch/test', [FrontController::class, 'fetchTest']);
 Route::post('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
+Route::middleware('auth')->prefix('/shop-cart')->group(function () {
+    //     // 購物車頁首
+    Route::get('/', [CheckoutallController::class, 'index'])->name('shopCart.index');
+    // 配貨資訊頁
+    Route::get('/delivery', [CheckoutallController::class, 'delivery'])->name('shopCart.delivery');
+    // 付款資訊頁
+    Route::get('/payment', [CheckoutallController::class, 'payment'])->name('shopCart.payment');
+    // 完成頁
+    Route::get('/complete', [CheckoutallController::class, 'complete'])->name('shopCart.complete');
+});
+
+// Route::prefix('/ss')->group(function () {
+//     Route::get('/payment', [CheckoutallController::class, 'payment'])->name('payment.index');
+// });
